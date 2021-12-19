@@ -7,8 +7,7 @@ import { LOGIN_ROUTE, MAIN_ROUTE, REGISTRATION_ROUTE } from "../utils/consts";
 import {login, registration} from "../http/userAPI";
 import { observer } from 'mobx-react-lite';
 import "../css.css";
-import { GoogleLogin, GoogleLogout } from 'react-google-login';
-const clientId = "225202864346-k01k8j33vmutqn1nn0hforpo2alvv8va.apps.googleusercontent.com"
+
 
 const Auth = observer(() => {
     
