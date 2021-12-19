@@ -7,7 +7,6 @@ import RecipeStore from './store/RecipeStore';
 import UserStore from './store/UserStore';
 
 export const Context = createContext(null)
-console.log('http://localhost:5000/')
 
 ReactDOM.render(
     <Context.Provider value={{

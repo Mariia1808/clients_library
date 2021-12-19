@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 import {fetchFavorite, fetchOneRecipe, updateKcal } from '../http/recipeAPI';
 import { fetchTypes } from '../http/typeAPI';
-import { CSVLink } from "react-csv";
 import { fetchProducts, fetchProportions } from '../http/productAPI';
 import DeleteAndUpdateRecipe from '../modals/UpdateRecipe';
 import { fetchUser } from '../http/userAPI';
@@ -96,37 +95,6 @@ const RecipePage = observer(() => {
         formData1.append('recipeId', parseInt(recipes.id))
         createCook(formData1).then()
     }
-       
-
-    const createCsvTable = (csvData) => {
-        csvData.push(['name', 'time', 'complex',
-            'profile_mini', 'profile', 'rating',
-            'kcal', 'protein', 'fat', 'carb','typeId'])
-        let rowAr = [];
-        recipe.recipes.map(publ =>{
-            if (publ.id === parseInt(recipes.id))
-            {
-            rowAr = []
-            rowAr.push("'"+publ.name.toString()+"'")
-            rowAr.push("'"+publ.time.toString()+"'")
-            rowAr.push("'"+publ.complex.toString()+"'")
-            rowAr.push("'"+publ.profile_mini.toString()+"'")
-            rowAr.push("'"+publ.profile.toString()+"'")
-            rowAr.push("'"+publ.kcal.toString()+"'")
-            rowAr.push("'"+publ.protein.toString()+"'")
-            rowAr.push("'"+publ.fat.toString()+"'")
-            rowAr.push("'"+publ.carb.toString()+"'")
-            rowAr.push("'"+recipe.types.find((a) => a.id === publ.typeId).name.toString()+"'")
-            }
-            csvData.push(rowAr)
-            }
-        )
-
-        return csvData
-    }
-    
-    const csvData = [
-    ];
     
     const ifRated =(number)=>{
         if(parseInt(number)===5){
@@ -234,7 +202,7 @@ const RecipePage = observer(() => {
                     <div>
                     {recipe.setSelectedType('')}
                     <div className='md-4'>
-                    <Image className="photo" width={300} height={300} src={'http://localhost:5000/recipe/'+ recipes.id +'/'+ recipes.img}/>
+                    <Image className="photo" width={300} height={300} src={process.env.REACT_APP_API_URL+ recipes.id +'/'+ recipes.img}/>
                  
                     <div className="step">
                     <h2 className="steps">Этапы приготовления</h2>
@@ -253,7 +221,7 @@ const RecipePage = observer(() => {
                         <Button  variant={"outline-light"} value={5} disabled={rated6} onClick={e => delrated()} className="rates0"/></>
                     :<></>}
 
-                    <Button className="export"><CSVLink class="dropdown-item" data={createCsvTable(csvData)} >Скачать рецепт</CSVLink></Button>
+                    <Button className="export">Скачать рецепт</Button>
                     <h2 className="namerec1">{recipes.name}</h2>
                     <div className="raterec"> <text>{recipes.rate}</text> </div> 
                     <text className="descript_mini">{recipes.profile_mini}</text>
