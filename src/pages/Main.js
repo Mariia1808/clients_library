@@ -1,18 +1,14 @@
 import { Container, Row, Col, Button, Form, Navbar} from "react-bootstrap";
 import "../css.css";
 import React, { useContext, useEffect, useState } from 'react';
-import RecipeList from "../components/RecipeList";
 import { useHistory } from 'react-router-dom';
 import { observer } from "mobx-react-lite";
-import { RECIPES_ROUTE } from "../utils/consts";
 import time1 from "../assets/2278023 (1).png";
 import time2 from "../assets/2278021 (1).png";
 import time3 from "../assets/2278019 (1).png";
 import time4 from "../assets/2278024 (1).png";
 import RecipeListFilter from "../components/RecipeListFilter";
 import ProductBar from "../components/ProductBar";
-import Nouislider from "nouislider-react";
-import "nouislider/distribute/nouislider.css";
 import { Context } from "..";
 import { fetchRecipes, fetchTypes } from "../http/recipeAPI";
 import { fetchProducts } from "../http/productAPI";
