@@ -12,9 +12,7 @@ const RecipeItem = ({recipe}) => {
     const history = useHistory()
     //const {recipe} = useContext(Context)
     const {rating} = useContext(Context)
-    const storedToken = localStorage.getItem("token");
-    let decodedData = jwt_decode(storedToken);
-    
+   
     return (
         
         

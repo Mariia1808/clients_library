@@ -21,7 +21,10 @@ const NavBar = observer(() => {
     const storedToken = localStorage.getItem("token");
     let decodedData = jwt_decode(storedToken);
 
-    
+    const out = ()=>{
+        localStorage.clear()
+        user.setIsAuth(false)
+    }
 
     return (
         
@@ -34,7 +37,7 @@ const NavBar = observer(() => {
                 {user.isAuth?
                 <Nav className="ml-auto ">
                     <Button className="main" id="d3" variant={"outline-light"} onClick={()=> history.push(USER_ROUTE+'/'+decodedData.id)}>Кабинет</Button>
-                    <Button className="main" id="d4" variant={"outline-light"} onClick={() => user.setIsAuth(false)}>Выход</Button>
+                    <Button className="main" id="d4" variant={"outline-light"} onClick={() => out()}>Выход</Button>
                 </Nav>
                     :
                 <Nav className="ml-auto">
