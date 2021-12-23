@@ -8,19 +8,17 @@ import Main from './pages/Main';
 import Type from './pages/Type';
 
 export const authRoutes = [
-    
-    {
-        path:USER_ROUTE +'/:id',
-        Component: UserPage
-    }
-
-    
+        
 ]
 
 export const publicRoutes = [
     {
         path:RECIPES_ROUTE,
         Component: Recipes
+    },
+    {
+        path:USER_ROUTE +'/:id',
+        Component: UserPage
     },
     {
         path: TYPE_ROUTE + '/:id',
